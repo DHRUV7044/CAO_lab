@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "rca8_behav" "xil_defaultlib.rca8" -log "elaborate.log" 
