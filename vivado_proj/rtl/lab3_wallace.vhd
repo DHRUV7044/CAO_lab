@@ -61,7 +61,7 @@ architecture Behavioral of lab3_wallace is
     signal cout : std_logic;
 
 begin
-    process(a , b)
+    process(a , b , p0 , p1 , p2 , p3 , r0 , r1 , r2 , r3 , r4)
     
     begin
     
@@ -72,9 +72,9 @@ begin
         
         for i in 0 to 3 loop
             p0(i) <= a(0) and b(i);
-            p1(i) <= a(1) and b(i);
-            p2(i) <= a(2) and b(i);
-            p3(i) <= a(3) and b(i);
+            p1(i+1) <= a(1) and b(i);
+            p2(i+2) <= a(2) and b(i);
+            p3(i+3) <= a(3) and b(i);
         end loop;
         
         r0 <= (others => '0');
@@ -122,7 +122,7 @@ begin
         r4(1) <= '0';
         r4(2) <= '0';
         r4(3) <= r0(2) and r1(2);
-        r4(4) <= ( r0(2) and r1(2) ) or ( r1(2) and r2(2) ) or ( r2(2) and r0(2) );
+        r4(4) <= ( r0(3) and r1(3) ) or ( r1(3) and r2(3) ) or ( r2(3) and r0(3) );
         r4(5) <= r0(4) and r1(4);
         r4(6) <= r0(5) and r1(5);
         r4(7) <= r0(6) and r1(6);
@@ -130,6 +130,6 @@ begin
        
     end process;
 
-    final_add : rca8 port map (a => r3 , b => r4 , sum =>c , cout =>cout);
+    final_add : rca8 port map (a => r3 , b => r4 , sum => c , cout => cout);
     
 end Behavioral;
